@@ -5,7 +5,7 @@ import Modal from "react-responsive-modal";
 import "./main.scss";
 import "react-input-range/lib/css/index.css";
 
-class Conculator extends Component {
+class Canculator extends Component {
     constructor(props){
         super(props);
         this.state = {
@@ -32,12 +32,12 @@ class Conculator extends Component {
         let { amount, years, rate } = this.state;
         let totalPercents = 0;
         let totalSum = 0;
-        // Расчет ежемесячного платежа
+        // Oylik to'lovni hisoblash
         rate = rate / 1200;
         const paymentValue = Math.round(
             (amount * rate) / (1 - Math.pow(1 + rate, -years))
         );
-        // Расчет суммы займа при изменении платежа
+        // To'lovni o'zgartirishda kredit miqdorini hisoblash
         if (name === "payment") {
             const summa = Math.round(
                 (value * (1 - Math.pow(1 + rate, -years))) / rate
@@ -155,7 +155,7 @@ class Conculator extends Component {
                             formatLabel={value => `${value.toLocaleString()} ₽`}
                             maxValue={5000000}
                             minValue={3000000}
-                            // value={this.state.amount}
+                            value={this.state.amount}
                             onChange={value => this.handRangeChange("amount", value)}
                         />
                         <div className="form-left mt-4">
@@ -168,7 +168,7 @@ class Conculator extends Component {
                         <InputRange
                             step={yearsStep}
                             formatLabel={value => `${value.toLocaleString()}m.`}
-                            maxValue={240}
+                            // maxValue={240}
                             minValue={1}
                             value={this.state.years}
                             classNames="input_range"
@@ -186,7 +186,7 @@ class Conculator extends Component {
                             step={0.1}
                             formatLabel={value => `${value.toLocaleString()}% yiliga`}
                             maxValue={60}
-                            minValue={6}
+                            // minValue={6}
                             value={this.state.rate}
                             classNames="form-control"
                             onChange={value => this.handRangeChange("rate", value)}
@@ -240,15 +240,15 @@ class Conculator extends Component {
                         <input type="button" className="btn btn-warning mt-3 mx-2" value="Arizangizni yuboring"/>
 
                         <Modal open={open} onClose={this.onCloseModal} center>
-                            <table>
-                                <option>To'lov jadvali</option>
+                            <table className="table container calculator">
+                                <option className="mt-3 h3" style={{textAlign: "center"}}>To'lov jadvali</option>
                                 <tbody>
                                 <tr>
-                                    <th>#</th>
-                                    <th>To'lov ₽</th>
-                                    <th>Foizlarni to'lash, ₽</th>
-                                    <th>Asosiy to'lov, ₽</th>
-                                    <th>Qolgan asosiy qarz, ₽</th>
+                                    <th scope="col">#</th>
+                                    <th scope="col">To'lov ₽</th>
+                                    <th scope="col">Foizlarni to'lash, ₽</th>
+                                    <th scope="col">Asosiy to'lov, ₽</th>
+                                    <th scope="col">Qolgan asosiy qarz, ₽</th>
                                 </tr>
                                 {this.createTable()}
                                 <tr className="table__total">
@@ -274,4 +274,4 @@ class Conculator extends Component {
         );
     }
 }
-export default Conculator;
+export default Canculator;

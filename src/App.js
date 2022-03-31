@@ -1,9 +1,9 @@
-import Conculator from "./Components/Canculator";
+import Canculator from "./Components/Canculator";
 
 function App() {
   return (
     <>
-     <Conculator/>
+        <Canculator/>
     </>
   );
 }
