@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import InputRange from "react-input-range";
 import Modal from "react-responsive-modal";
 
-import "./Canculator.css";
+import "./main.scss";
 import "react-input-range/lib/css/index.css";
 
 class Conculator extends Component {
@@ -142,7 +142,7 @@ class Conculator extends Component {
         } = this.state;
         return (
             <>
-                <form action="#" className="conculator">
+                <form action="#" className="calculator">
                     <div className="left-slider">
                         <div className="form-left">
                             <label>So'mma</label>
@@ -272,5 +272,4 @@ class Conculator extends Component {
         );
     }
 }
-
 export default Conculator;
