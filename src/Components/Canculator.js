@@ -141,12 +141,12 @@ class Conculator extends Component {
             amount
         } = this.state;
         return (
-            <>
+            <div className="container">
                 <form action="#" className="calculator">
                     <div className="left-slider">
-                        <div className="form-left">
-                            <label>So'mma</label>
-                            <input type="number" className="input-left"  value={this.state.amount}
+                        <div className="form-left mb-4">
+                            <label className="form-label">So'mma</label>
+                            <input type="number" className="form-control"  value={this.state.amount}
                                    lang="en-150" name="amount" onChange={e => this.handleInputChange(e)}
                             />
                         </div>
@@ -155,12 +155,12 @@ class Conculator extends Component {
                             formatLabel={value => `${value.toLocaleString()} ₽`}
                             maxValue={5000000}
                             minValue={3000000}
-                            value={this.state.amount}
+                            // value={this.state.amount}
                             onChange={value => this.handRangeChange("amount", value)}
                         />
-                        <div className="form-left">
-                            <label className="label-left">Kredit muddati:</label>
-                            <input type="number" className="input-left"
+                        <div className="form-left mt-4">
+                            <label className="form-label">Kredit muddati:</label>
+                            <input type="number" className="form-control"
                                    name="years" value={this.state.year}
                                    onChange={e => this.handleInputChange(e)}
                             />
@@ -175,9 +175,11 @@ class Conculator extends Component {
                             onChange={value => this.handRangeChange("years", value)}
                         />
                         <div className="form-left">
-                            <label className="label-left">Stavka foizi:</label>
-                            <input type="text" className="input-left"
-                                   name="rate" value={this.state.rate} onChange={e => this.handRangeChange(e)}
+                            <label className="form-label">Stavka foizi:</label>
+                            <input type="text" className="form-control"
+                                   name="rate"
+                                   value={this.state.rate}
+                                   onChange={e => this.handRangeChange(e)}
                             />
                         </div>
                         <InputRange
@@ -186,21 +188,21 @@ class Conculator extends Component {
                             maxValue={60}
                             minValue={6}
                             value={this.state.rate}
-                            classNames="input-range"
+                            classNames="form-control"
                             onChange={value => this.handRangeChange("rate", value)}
                         />
                         <div className="form-left">
                             <p className="type-payment">To'lov turi:</p>
-                            <select className="select-payment">
-                                <option>annuitet</option>
-                                <option>faqat qiziqish</option>
+                            <select className="form-select">
+                                <option className="form-control">Annuitet</option>
+                                <option className="form-control">Faqat qarzga</option>
                             </select>
                         </div>
                     </div>
                     <div className="right-slider">
                         <div className="form-left">
-                            <label className="label-left">Oylik to'lov:</label>
-                            <input type="text" className="input-left"
+                            <label className="form-label">Oylik to'lov:</label>
+                            <input type="text" className="form-control"
                                    name="name" value={this.state.payment.toLocaleString()}
                                    onChange={e => this.handRangeChange(e)}
                             />
@@ -211,31 +213,31 @@ class Conculator extends Component {
                             maxValue={200000}
                             minValue={0}
                             value={this.state.payment}
-                            classNames="input_range"
+                            classNames="form-left"
                             onChange={value => this.handRangeChange("payment", value)}
                         />
                         <div className="form-left">
-                            <label className="label-left">To'lanishi kerak bo'lgan miqdor:</label>
+                            <label className="form-label mt-3">To'lanishi kerak bo'lgan miqdor:</label>
                             <input type="text"
-                                   className="input-left"
+                                   className="form-control"
                                    readOnly
                                    value={this.state.totalSum.toLocaleString() + " ₽"}
                                    name="totalSum"
                             />
                         </div>
                         <div className="form-left">
-                            <label className="label-left">Foizlarni ortiqcha to'lash:</label>
+                            <label className="form-label mt-3">Foizlarni ortiqcha to'lash:</label>
                             <input
                                 type="text"
-                                className="input-left"
+                                className="form-control"
                                 readOnly
                                 value={this.state.totalPercents.toLocaleString() + " ₽"}
                                 name={totalPercents}
                             />
                         </div>
 
-                        <input type="button" onClick={this.onOpenModal} value="To'lov jadvali"/>
-                        <input type="button" value="Arizangizni yuboring"/>
+                        <input type="button" className="btn btn-danger mt-3 mx-2" onClick={this.onOpenModal} value="To'lov jadvali"/>
+                        <input type="button" className="btn btn-warning mt-3 mx-2" value="Arizangizni yuboring"/>
 
                         <Modal open={open} onClose={this.onCloseModal} center>
                             <table>
@@ -268,7 +270,7 @@ class Conculator extends Component {
                         </Modal>
                     </div>
                 </form>
-            </>
+            </div>
         );
     }
 }
